@@ -1150,7 +1150,7 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "expr": "sum(increase(cs_bucket_created_total{instance=\"$instance\"}[$__interval])) by (name)",
+              "expr": "sum(increase(cs_bucket_instantiation_total{instance=\"$instance\"}[$__interval])) by (name)",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
@@ -1476,7 +1476,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(cs_info, instance)",
+        "definition": "label_values(cs_info{container=\"crowdsec-agent\"},instance)",
         "hide": 0,
         "includeAll": false,
         "label": "instance",
@@ -1484,7 +1484,7 @@
         "name": "instance",
         "options": [],
         "query": {
-          "query": "label_values(cs_info, instance)",
+          "query": "label_values(cs_info{container=\"crowdsec-agent\"},instance)",
           "refId": "Prometheus-instance-Variable-Query"
         },
         "refresh": 1,
